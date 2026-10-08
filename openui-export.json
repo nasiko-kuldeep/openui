@@ -1,0 +1,11 @@
+{
+    "dsl": "root = Card([CardHeader(\"Hello\", \"React export test\")])",
+    "code": "\"use client\";\n\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from \"@/components/ui/card\";\n\nexport type GeneratedAction = {\n  type: string;\n  label?: string;\n  params?: Record<string, unknown>;\n  formData?: Record<string, unknown>;\n};\nexport type GeneratedActionHandler = (event: GeneratedAction) => void;\n\n\n\nexport default function GeneratedUI({ onAction }: { onAction?: GeneratedActionHandler } = {}) {\n  return (\n    <Card>\n      <CardContent className={\"p-0 space-y-3\"}>\n        <CardHeader className={\"p-0\"}>\n          <CardTitle>\n            {\"Hello\"}\n          </CardTitle>\n          <CardDescription>\n            {\"React export test\"}\n          </CardDescription>\n        </CardHeader>\n      </CardContent>\n    </Card>\n  );\n}\n",
+    "dependencies": [],
+    "shadcnComponents": [
+        "card"
+    ],
+    "warnings": [],
+    "language": "tsx",
+    "filename": "GeneratedUI.tsx"
+}

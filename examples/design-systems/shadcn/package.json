@@ -12,6 +12,7 @@
     "preverify": "npm run generate",
     "verify": "next build",
     "start": "next start",
+    "test": "node --import ./scripts/register-typescript.mjs --test tests/*.test.ts src/lib/code-export/*.test.ts",
     "lint": "eslint"
   },
   "dependencies": {

@@ -1,5 +1,6 @@
 "use client";
 
+import { ExportableAssistantMessage } from "@/components/exportable-message";
 import { shadcnChatLibrary } from "@/lib/shadcn-genui";
 import {
   AgentInterface,
@@ -31,6 +32,7 @@ export default function Page() {
       <AgentInterface
         llm={llm}
         componentLibrary={shadcnChatLibrary}
+        components={{ AssistantMessage: ExportableAssistantMessage }}
         agentName="shadcn/ui Chat"
         theme={{ mode }}
         starterVariant="short"
