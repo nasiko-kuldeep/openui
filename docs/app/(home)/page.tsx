@@ -1,3 +1,4 @@
+import { BASE_URL } from "@/lib/source";
 import type { Metadata } from "next";
 import { AGENT_SETUP_PROMPT, AgentPicker } from "./components/AgentPicker/AgentPicker";
 import styles from "./page.module.css";
@@ -19,9 +20,50 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.thesys.dev/#organization",
+      name: "Thesys",
+      url: "https://www.thesys.dev",
+      sameAs: [
+        "https://github.com/thesysdev",
+        "https://x.com/thesysdev",
+        "https://www.linkedin.com/company/thesysdev/",
+      ],
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${BASE_URL}/#software`,
+      name: "OpenUI",
+      url: BASE_URL,
+      description:
+        "Full-stack, framework-agnostic Generative UI built on OpenUI Lang, a streaming-first language with first-party runtimes for React, Vue, Svelte, and Angular.",
+      applicationCategory: "DeveloperApplication",
+      operatingSystem: "Cross-platform",
+      license: "https://opensource.org/licenses/MIT",
+      publisher: { "@id": "https://www.thesys.dev/#organization" },
+      sameAs: [
+        "https://github.com/thesysdev/openui",
+        "https://www.npmjs.com/org/openuidev",
+        "https://x.com/thesysdev",
+        "https://www.linkedin.com/company/thesysdev/",
+      ],
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <div className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replaceAll("<", "\\u003c"),
+        }}
+      />
       <div className={styles.heroShell}>
         <HeroSection
           align="left"
